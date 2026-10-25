@@ -1,6 +1,14 @@
 // My own gallery photos, newest first. The Gallery's "Add photos" button keeps this list up to date.
 window.GALLERY_PHOTOS = [
     {
+        "file":  "photo-20261025-221852-1310.jpg",
+        "caption":  "",
+        "alt":  "",
+        "width":  1200,
+        "height":  1600,
+        "added":  "2026-10-25T22:18:52"
+    },
+    {
         "file":  "photo-20261024-203314-6041.jpg",
         "caption":  "",
         "alt":  "",

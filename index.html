@@ -5,7 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>White Water Wasted</title>
   <meta name="description" content="White Water Wasted: live wave and wind conditions, surfing spots worth the trip, and notes from the line up.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>">
+  <link rel="canonical" href="https://whitewaterwasted.com/">
+  <!-- Browser tab and phone home-screen icons: the logo on navy (made by .claude/tools/make-icons.ps1) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/icon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <meta name="theme-color" content="#11303f">
+  <!-- What a shared link shows on WhatsApp, Facebook, Instagram, X and others (picture: .claude/tools/make-share-image.ps1) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="White Water Wasted">
+  <meta property="og:title" content="White Water Wasted">
+  <meta property="og:description" content="Where the surf is best right now, for every level: live conditions and tides, surf spots worth the trip, and wave pools.">
+  <meta property="og:url" content="https://whitewaterwasted.com/">
+  <meta property="og:image" content="https://whitewaterwasted.com/images/share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The White Water Wasted logo over a wave pool at sunset">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -97,7 +114,7 @@
     /* Tabs: with JavaScript on, only the chosen section shows */
     .js main > [data-tab] { display: none; min-height: calc(100svh - 68px); }
     .js main > [data-tab].is-active { display: block; animation: tab-in .45s ease; }
-    .js main > .hero.is-active { display: flex; align-items: center; }
+    .js main > .hero.is-active { display: flex; flex-direction: column; justify-content: center; align-items: center; }
     .hero > .wrap { width: 100%; }
     main > [data-tab]:focus { outline: none; }
     @keyframes tab-in { from { opacity: 0; transform: translateY(8px); } }
@@ -746,6 +763,45 @@
     .share .btn:disabled { opacity: .45; cursor: default; }
     .share-done { margin: 0; padding: 18px 20px; border-radius: 16px; background: var(--white); font-size: 1.05rem; }
 
+    /* Cap check on Home: a one-tap "would you want a www cap?" (Mockups/cap-check.html). Nothing is for sale. */
+    .capcheck { display: grid; grid-template-columns: 200px minmax(0, 1fr); align-items: center; gap: 32px; max-width: 860px; margin: 88px auto 0; padding: 28px 32px 28px 28px; border: 1px solid var(--line); border-radius: 26px; background: #f2eee8; box-shadow: 0 18px 40px rgba(17, 48, 63, .06); }
+    .cap-pic { position: relative; display: grid; place-items: center; aspect-ratio: 1; border-radius: 22px; background: #f4f4f4; transform: rotate(-4deg); box-shadow: 0 14px 30px rgba(17, 48, 63, .12); transition: transform .3s; }
+    .cap-pic:hover { transform: rotate(3deg) scale(1.03); }
+    .cap-pic img { width: 92%; mix-blend-mode: multiply; }
+    .cap-sticker { position: absolute; top: -10px; right: -12px; padding: 6px 10px; border-radius: 999px; background: var(--ocean); color: var(--white); font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; transform: rotate(8deg); box-shadow: 0 6px 14px rgba(17, 48, 63, .2); }
+    .capcheck p { margin: 0; color: var(--ink-2); }
+    .capcheck .cap-title { margin: 4px 0 6px; font-size: 2.2rem; line-height: 1.1; }
+    .cap-choices { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; margin-top: 18px; }
+    .capcheck .btn { padding: 12px 20px; font: inherit; font-weight: 600; font-size: .95rem; cursor: pointer; }
+    .capcheck .btn:disabled { opacity: .45; cursor: default; }
+    .capcheck .btn-ghost { background: var(--white); color: var(--ink); }
+    .capcheck .btn-ghost:hover { background: var(--ink); color: var(--white); }
+    .cap-quiet, .cap-undo { padding: 12px 6px; border: 0; background: none; font: inherit; font-size: .95rem; font-weight: 600; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+    .cap-quiet:hover, .cap-undo:hover { color: var(--ink); }
+    .capcheck .cap-small { margin-top: 12px; font-size: .82rem; color: var(--muted); }
+    .capcheck .cap-stoked { font-family: var(--serif); font-size: 2.1rem; line-height: 1.1; color: var(--ink); }
+    .cap-stoked em { color: var(--ocean); }
+    .cap-stoked:focus, .cap-sent:focus { outline: none; }
+    .cap-email { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .capcheck .cap-label { display: block; margin-bottom: 8px; font-size: .74rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    /* "Why?" after a yes: four chips, and a text box for "Other" */
+    .cap-why { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .cap-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .cap-chip { padding: 7px 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); font: inherit; font-size: .92rem; font-weight: 600; color: var(--ink-2); cursor: pointer; transition: border-color .2s, background .2s, color .2s; }
+    .cap-chip:hover { border-color: var(--ocean); color: var(--ocean); }
+    .cap-chip[aria-pressed="true"] { border-color: var(--ocean); background: var(--foam); color: var(--ocean); }
+    .cap-other { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .cap-other[hidden] { display: none; }
+    .capcheck .cap-why-thanks { margin-top: 8px; font-size: .88rem; color: var(--ocean); }
+    .cap-email-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .cap-email-row input, .cap-other input { flex: 1; min-width: 200px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--white); font: inherit; font-size: .95rem; color: var(--ink); }
+    .cap-email-row input:focus, .cap-other input:focus { outline: 2px solid var(--ocean); outline-offset: 0; border-color: var(--ocean); }
+    .capcheck .cap-fine { margin-top: 8px; font-size: .8rem; color: var(--muted); }
+    .cap-fine a { color: var(--ocean); text-underline-offset: 3px; }
+    .capcheck .cap-status:not(:empty) { margin-top: 8px; font-size: .88rem; color: var(--ink); }
+    .capcheck .cap-sent { margin-top: 16px; padding: 12px 14px; border-radius: 14px; background: var(--foam); font-size: .95rem; color: var(--ink); }
+    .cap-undo { display: block; margin-top: 6px; padding: 6px 0; font-size: .82rem; font-weight: 400; }
+
     /* Pop-up windows: the photo viewer and "Add photos" */
     dialog { padding: 0; border: 0; color: var(--ink); }
     dialog::backdrop { background: rgba(10, 30, 40, .9); }
@@ -807,6 +863,13 @@
     .uploader-actions { display: flex; justify-content: flex-end; gap: 10px; }
     .uploader-actions .btn { cursor: pointer; font: inherit; font-weight: 600; font-size: .95rem; }
     .uploader-actions .btn:disabled { opacity: .45; cursor: default; }
+    /* "Take this photo out of the gallery?" and other questions before removing something */
+    .ask-box { width: min(440px, calc(100vw - 32px)); }
+    .ask-box .uploader-head h3 { font-size: 1.5rem; }
+    .ask-text { margin: 0; color: var(--ink-2); }
+    .ask-box .btn-primary { border-color: #8f3f2f; background: #8f3f2f; }
+    .ask-box .btn-primary:hover { border-color: #6e2f23; background: #6e2f23; }
+    .ask-box [hidden] { display: none; }
     /* "Log a session" form */
     .field-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
     .field { display: flex; flex-direction: column; gap: 6px; min-width: 0; margin: 0; padding: 0; border: 0; }
@@ -846,6 +909,7 @@
       .pulse, .skeleton, .js main > [data-tab].is-active, .about-night::before, .night-waves .drift, .about-logo, .nb-waves, .nb-go svg, .cond.is-linked { animation: none; }
       .next-best-btn, .next-best-btn:hover { transform: none; }
       .gallery img { transition: none; }
+      .cap-pic:hover { transform: rotate(-4deg); }
     }
 
     @media (max-width: 900px) {
@@ -915,6 +979,13 @@
       .rank-detail { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 12px; grid-column: 2 / -1; grid-row: 2; }
       .rank-stats, .rank-water { font-size: .85rem; }
       .entry, .share { padding: 20px; }
+      /* Cap check: stacked and centred */
+      .capcheck { grid-template-columns: minmax(0, 1fr); gap: 20px; margin-top: 64px; padding: 24px 20px; text-align: center; }
+      .cap-pic { width: 150px; margin: 0 auto; }
+      .capcheck .cap-title { font-size: 1.9rem; }
+      .capcheck .cap-stoked { font-size: 1.8rem; }
+      .cap-choices, .cap-chips, .cap-other, .cap-email-row { justify-content: center; }
+      .cap-undo { margin-inline: auto; }
       /* Phones: "Plan this day" and "Add to calendar" move under the spot details, so the middle column keeps its width */
       .best-tile { grid-template-columns: auto minmax(0, 1fr); gap: 6px 14px; padding: 12px; }
       .best-date { grid-row: span 2; }
@@ -963,7 +1034,7 @@
         <a href="#conditions">Conditions</a>
         <a href="#spots">My spots</a>
         <a href="#wave">Learn</a>
-        <a href="#diary">Diary</a>
+        <a href="#diary">Share</a>
         <a href="#gallery">Gallery</a>
       </nav>
     </div>
@@ -974,7 +1045,7 @@
       <div class="wrap hero-grid">
         <div class="hero-text">
           <p class="eyebrow">Twelve breaks · three oceans · wherever the swell is</p>
-          <h1>White Water <em>Wasted</em></h1>
+          <h1>white water <em>wasted</em></h1>
           <p class="lead">For anyone who has fallen in love with the surfing life, clean waves and beautiful travel. See where the surf is best right now, and find your next session.</p>
           <!-- The same surf level switch as on Conditions: changing either one changes both -->
           <div class="hero-level">
@@ -1001,6 +1072,57 @@
           <div class="live-chip" id="live-chip" hidden>
             <p class="chip-title"><span class="pulse"></span>Best right now</p>
             <div id="chip-rows"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Cap check: would visitors want a www cap? One tap, anonymous, nothing for sale (script at the bottom) -->
+      <div class="wrap">
+        <div class="capcheck" id="capcheck">
+          <div class="cap-pic">
+            <img src="images/cap.png" alt="A white baseball cap with the White Water Wasted logo on the front" width="450" height="409" loading="lazy">
+            <span class="cap-sticker" aria-hidden="true">Idea</span>
+          </div>
+          <div>
+            <div id="cap-ask">
+              <p class="eyebrow">Merch idea</p>
+              <h2 class="cap-title">Want one?</h2>
+              <p>www caps. No money, no sign-up: just tell me if you'd want one.</p>
+              <div class="cap-choices">
+                <button class="btn btn-primary" type="button" data-cap="yes">Yes, I'd wear it 🤙</button>
+                <button class="btn btn-ghost" type="button" data-cap="maybe">Maybe</button>
+                <button class="cap-quiet" type="button" data-cap="no">Not for me</button>
+              </div>
+              <p class="cap-small">One tap, totally anonymous. Nothing is for sale (yet).</p>
+            </div>
+            <div id="cap-thanks" hidden>
+              <p class="cap-stoked" id="cap-stoked" tabindex="-1"></p>
+              <div class="cap-why" id="cap-why" hidden>
+                <p class="cap-label" id="cap-why-label">Optional: why?</p>
+                <div class="cap-chips" role="group" aria-labelledby="cap-why-label">
+                  <button class="cap-chip" type="button" data-why="brand" aria-pressed="false">I like the brand</button>
+                  <button class="cap-chip" type="button" data-why="cool" aria-pressed="false">It's cool</button>
+                  <button class="cap-chip" type="button" data-why="need" aria-pressed="false">Need a cap</button>
+                  <button class="cap-chip" type="button" data-why="other" aria-pressed="false">Other</button>
+                </div>
+                <form class="cap-other" id="cap-other" novalidate hidden>
+                  <label class="sr" for="cap-other-input">Your reason</label>
+                  <input type="text" id="cap-other-input" maxlength="100" placeholder="Tell me more…">
+                  <button class="btn btn-ghost" type="submit">Send</button>
+                </form>
+                <p class="cap-why-thanks" id="cap-why-thanks" hidden>Thanks, good to know!</p>
+              </div>
+              <form class="cap-email" id="cap-email" action="https://formspree.io/f/xpppqaqn" method="POST" novalidate hidden>
+                <label class="cap-label" for="cap-email-input">Optional: want a heads-up if they happen?</label>
+                <div class="cap-email-row">
+                  <input type="email" name="email" id="cap-email-input" maxlength="120" autocomplete="email" placeholder="your@email.com">
+                  <button class="btn btn-primary" type="submit" id="cap-email-submit">Let me know</button>
+                </div>
+                <p class="cap-fine">Only used to tell you if they happen. <a href="privacy.html">Privacy</a></p>
+                <p class="cap-status" id="cap-status" aria-live="polite"></p>
+              </form>
+              <p class="cap-sent" id="cap-sent" tabindex="-1" hidden>Got it! You'll be first to hear if they happen.</p>
+              <button class="cap-undo" type="button" id="cap-undo">Changed your mind?</button>
+            </div>
           </div>
         </div>
       </div>
@@ -1035,7 +1157,7 @@
         <svg class="about-divider reveal" viewBox="0 0 120 16" aria-hidden="true"><path d="M2 8q14 -8 29 0t29 0t29 0t29 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         <h3 class="about-sub reveal">You’re in the right place</h3>
         <p class="reveal">Maybe you’ve never touched a foamie. Maybe you’ve mastered the Banzai Pipeline. Maybe, like me, you’re somewhere in between, taking a beating but paddling back out regardless.</p>
-        <p class="reveal">Wherever you are, we all started in the same place: in the white water, on a foamie, getting wiped out. And you only get to ride a barrel if you learned to love that bit first. Whether you’re in it right now, left it behind years ago or haven’t paddled out yet, it’s everyone’s origin story. <em class="about-name">White water wasted.</em> It doesn’t matter how long you’ve been surfing, we’ve all been there, and that’s the beauty of it. The experiences are shared.</p>
+        <p class="reveal">Wherever you are, we all started in the same place: in the white water, on a foamie, getting wiped out. And you only get to ride a barrel if you learned to love that bit first. Whether you’re in it right now, left it behind years ago or haven’t paddled out yet, it’s everyone’s origin story. <em class="about-name">white water wasted.</em> It doesn’t matter how long you’ve been surfing, we’ve all been there, and that’s the beauty of it. The experiences are shared.</p>
         <p class="reveal">I’ve always thought surfers see the world a little differently. There’s an outlook that comes from time in the water, and with it a real urge to pass on the good stuff: the right spot, the right tide, the place that changed everything. That’s what this site is about.</p>
         <p class="about-beat about-close reveal">So grab your board and your wetsuit, and let’s get white water wasted together.</p>
         <svg class="about-divider reveal" viewBox="0 0 120 16" aria-hidden="true"><path d="M2 8q14 -8 29 0t29 0t29 0t29 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -1160,7 +1282,7 @@
         <div class="section-head reveal">
           <p class="eyebrow">My spots</p>
           <h2>Twelve breaks, three oceans</h2>
-          <p>From cold-water favourites in Cornwall and Devon, through Portugal, France, Morocco and the Canary Islands, to warm water in Brazil, Nicaragua and Sri Lanka.</p>
+          <p>From cold-water favourites in Cornwall and Devon, through Portugal, France, Morocco and the Canary Islands, to warm water in Brazil, Nicaragua and Sri Lanka. Every surf camp here has been tried and tested by me, and I genuinely loved each one. Any questions or comments? Let me know through <a href="#share">Share</a>.</p>
         </div>
         <div class="globe-wrap reveal">
           <div class="globe-stage">
@@ -1614,7 +1736,7 @@
             <label class="field"><span>How was it?</span><textarea name="notes" id="share-notes" maxlength="1000" placeholder="The waves, the crowd, the vibe, and whether it's worth the trip…" required></textarea></label>
             <!-- Spam trap: people never see this, but bots often fill it in, and Formspree then ignores the message -->
             <input type="text" name="_gotcha" class="sr" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <p class="share-note">Your email is only used to reply to you and is never shown. If your session is added to the diary, only your name, the spot, date, rating and notes appear.</p>
+            <p class="share-note">Your email is only used to reply to you and is never shown. If your session is added to the diary, only your name, the spot, date, rating and notes appear. More in the <a href="privacy.html">privacy note</a>.</p>
             <p class="upload-status" id="share-status" aria-live="polite"></p>
             <div><button class="btn btn-primary" type="submit" id="share-submit">Send my session</button></div>
           </form>
@@ -1702,11 +1824,11 @@
       <div class="footer-grid">
         <div>
           <p>Forecasts are computer models, not promises. Always check the beach, the flags and the lifeguards before you paddle out.</p>
-          <p>© 2026 White Water Wasted</p>
+          <p>© 2026 White Water Wasted · <a href="privacy.html">Privacy</a></p>
         </div>
         <div>
           <p>Live data: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a> (CC BY 4.0)</p>
-          <p>Photos: <a href="https://unsplash.com/" target="_blank" rel="noopener">Unsplash</a></p>
+          <p>Photos: my own and <a href="https://unsplash.com/" target="_blank" rel="noopener">Unsplash</a></p>
           <p>Map: <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth</a></p>
           <p>Full forecasts: <a href="https://www.surfline.com/" target="_blank" rel="noopener">Surfline</a></p>
         </div>
@@ -2922,6 +3044,19 @@
     </form>
   </dialog>
 
+  <!-- "Are you sure?" before Remove (gallery and diary). A page dialog, not the browser's own pop-up,
+       which some browsers (like the one in the Claude app) block and quietly count as Cancel. -->
+  <dialog class="uploader ask-box" id="ask-box" aria-labelledby="ask-title" aria-describedby="ask-text">
+    <form method="dialog">
+      <div class="uploader-head"><h3 id="ask-title"></h3></div>
+      <p class="ask-text" id="ask-text"></p>
+      <div class="uploader-actions">
+        <button class="btn btn-ghost" value="cancel" id="ask-cancel">Cancel</button>
+        <button class="btn btn-primary" value="ok" id="ask-ok">Remove</button>
+      </div>
+    </form>
+  </dialog>
+
   <script src="images/gallery/photos.js"></script>
   <script>
     // Gallery: my own photos (newest first), click any photo to enlarge it,
@@ -3060,6 +3195,22 @@
       }
       window.webPhotoCopy = webCopy;
 
+      // Asks before removing something, or (with no ok label) just says something went wrong.
+      // Resolves true only if "Remove" was pressed. The diary uses it too, as window.askOwner.
+      const askBox = document.getElementById('ask-box');
+      function ask(title, text, ok) {
+        document.getElementById('ask-title').textContent = title;
+        document.getElementById('ask-text').textContent = text;
+        const okButton = document.getElementById('ask-ok');
+        okButton.hidden = !ok;
+        okButton.textContent = ok || '';
+        document.getElementById('ask-cancel').textContent = ok ? 'Cancel' : 'OK';
+        askBox.returnValue = '';
+        askBox.showModal();
+        return new Promise(resolve => askBox.addEventListener('close', () => resolve(askBox.returnValue === 'ok'), { once: true }));
+      }
+      window.askOwner = ask;
+
       // ---- Adding and removing photos (only when served by .claude/serve.ps1 on this computer) ----
       if (!['localhost', '127.0.0.1'].includes(location.hostname)) return;
       fetch('/api/ping').then(r => r.ok ? r.json() : null).then(status => { if (status && status.ok) enableEditing(); }).catch(() => {});
@@ -3159,13 +3310,13 @@
           const remove = e.target.closest('.photo-remove');
           if (!remove) return;
           const file = remove.closest('figure').dataset.file;
-          if (!confirm('Take this photo out of the gallery?\n\nIt moves to the "Removed photos" folder next to the site, so you can put it back later.')) return;
+          if (!await ask('Take this photo out of the gallery?', 'It moves to the "Removed photos" folder next to the site, so you can put it back later.', 'Remove')) return;
           const res = await fetch(`/api/photos?file=${encodeURIComponent(file)}`, { method: 'DELETE' }).catch(() => null);
           if (res && res.ok) {
             mine = mine.filter(p => p.file !== file);
             render();
           } else {
-            alert("Sorry, that photo couldn't be removed. Is the site still running?");
+            ask("That didn't work", "Sorry, that photo couldn't be removed. Is the site still running?");
           }
         });
       }
@@ -3523,13 +3674,13 @@
           if (!entry) return;
           if (e.target.closest('[data-edit]')) open(entry);
           if (!e.target.closest('[data-remove]')) return;
-          if (!confirm(`Take the ${nameOf(entry)} session on ${longDate(entry.date)} out of the diary?\n\nA copy is kept in the "Removed photos" folder next to the site, so it can be put back later.`)) return;
+          if (!await window.askOwner(`Take the ${nameOf(entry)} session on ${longDate(entry.date)} out of the diary?`, 'A copy is kept in the "Removed photos" folder next to the site, so it can be put back later.', 'Remove')) return;
           const res = await fetch(`/api/diary?id=${encodeURIComponent(entry.id)}`, { method: 'DELETE' }).catch(() => null);
           if (res && res.ok) {
             entries = entries.filter(x => x !== entry);
             render();
           } else {
-            alert("Sorry, that session couldn't be removed. Is the site still running?");
+            window.askOwner("That didn't work", "Sorry, that session couldn't be removed. Is the site still running?");
           }
         });
       }
@@ -3600,6 +3751,147 @@
           submit.disabled = false;
         }
       });
+    })();
+  </script>
+
+  <script>
+    // Cap check on Home: "Want one?" for a www cap. Nothing is sold: it's a show of hands.
+    // Each tap is counted anonymously (no cookies) by GoatCounter, once my account name is filled in below.
+    // This device remembers its answers (localStorage "cap-vote", "cap-why"). After a "yes", there's an optional "Why?"
+    // (an "Other" reason arrives in GoatCounter as "cap-why-other: …"), and an optional email for a heads-up if they happen.
+    // The email reaches my inbox through the same Formspree form as "Share your session".
+    (() => {
+      const GOATCOUNTER = 'antonia-code9';  // my GoatCounter account name (antonia-code9.goatcounter.com); empty = nothing is counted
+      const box = document.getElementById('capcheck');
+      if (!box) return;
+      const $ = id => document.getElementById(id);
+      const form = $('cap-email');
+      const input = $('cap-email-input');
+      const status = $('cap-status');
+      const submit = $('cap-email-submit');
+      const THANKS = {
+        yes: "Stoked! <em>You're in the imaginary queue.</em> 🤙",
+        maybe: "Noted! <em>If they happen, you'll see them here first.</em>",
+        no: "No worries. <em>The waves are free anyway.</em> 🌊"
+      };
+      const TITLES = { yes: "Cap check: yes, I'd wear it", maybe: 'Cap check: maybe', no: 'Cap check: not for me' };
+      const WHY = { brand: 'I like the brand', cool: "It's cool", need: 'Need a cap', other: 'Other' };
+      const load = key => { try { return localStorage.getItem(key); } catch (e) { return null; } };
+      const store = (key, value) => { try { value ? localStorage.setItem(key, value) : localStorage.removeItem(key); } catch (e) {} };
+
+      // GoatCounter also counts each visit. It ignores visits from my own computer (localhost) by itself.
+      if (GOATCOUNTER) {
+        const s = document.createElement('script');
+        s.async = true;
+        s.dataset.goatcounter = `https://${GOATCOUNTER}.goatcounter.com/count`;
+        s.src = 'https://gc.zgo.at/count.js';
+        document.head.appendChild(s);
+      }
+      // Count a tap as a GoatCounter event, waiting up to 5 seconds for count.js to arrive
+      function count(path, title) {
+        if (!GOATCOUNTER) return;
+        let tries = 0;
+        const t = setInterval(() => {
+          if (window.goatcounter && window.goatcounter.count) { clearInterval(t); window.goatcounter.count({ path, title, event: true }); }
+          else if (++tries > 50) clearInterval(t);
+        }, 100);
+      }
+
+      // "Why?": the chosen chip is pressed; "Other" opens a text box until a reason is sent
+      function showWhy() {
+        const why = load('cap-why');
+        const said = load('cap-why-said');
+        box.querySelectorAll('[data-why]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.why === why)));
+        $('cap-other').hidden = why !== 'other' || !!said;
+        $('cap-why-thanks').hidden = !WHY[why] || (why === 'other' && !said);
+      }
+
+      function show(vote, focusId) {
+        const emailed = load('cap-emailed') === '1';
+        $('cap-ask').hidden = !!vote;
+        $('cap-thanks').hidden = !vote;
+        if (!vote) return;
+        $('cap-stoked').innerHTML = THANKS[vote];
+        $('cap-why').hidden = vote !== 'yes';
+        showWhy();
+        form.hidden = vote !== 'yes' || emailed;
+        $('cap-sent').hidden = vote !== 'yes' || !emailed;
+        if (focusId) $(focusId).focus();
+      }
+
+      box.querySelectorAll('[data-cap]').forEach(btn => btn.addEventListener('click', () => {
+        const vote = btn.dataset.cap;
+        store('cap-vote', vote);
+        count('cap-' + vote, TITLES[vote]);
+        show(vote, 'cap-stoked');
+      }));
+
+      // Picking a reason counts it; switching to another takes the old one back ("cap-why-undo-…", to subtract)
+      function dropWhy() {
+        const old = load('cap-why');
+        if (WHY[old]) count('cap-why-undo-' + old, 'Cap check: took back why: ' + WHY[old]);
+        store('cap-why', null);
+        store('cap-why-said', null);
+      }
+      box.querySelectorAll('[data-why]').forEach(btn => btn.addEventListener('click', () => {
+        const why = btn.dataset.why;
+        if (load('cap-why') === why) return;
+        dropWhy();
+        store('cap-why', why);
+        count('cap-why-' + why, 'Cap check: why: ' + WHY[why]);
+        showWhy();
+        if (why === 'other') $('cap-other-input').focus();
+      }));
+      $('cap-other').addEventListener('submit', e => {
+        e.preventDefault();
+        const input = $('cap-other-input');
+        const said = input.value.replace(/\s+/g, ' ').trim().slice(0, 100);
+        if (!said) { input.focus(); return; }
+        store('cap-why-said', said);
+        count('cap-why-other: ' + said, 'Cap check: why, in their words');
+        input.value = '';
+        showWhy();
+      });
+
+      // Changing your mind takes the old answers back (counted as "cap-undo-yes" and so on, to subtract) and asks again
+      $('cap-undo').addEventListener('click', () => {
+        const old = load('cap-vote');
+        if (THANKS[old]) count('cap-undo-' + old, 'Cap check: changed mind after ' + old);
+        dropWhy();
+        store('cap-vote', null);
+        show(null);
+        box.querySelector('[data-cap="yes"]').focus();
+      });
+
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const email = input.value.trim();
+        if (!email || !input.checkValidity()) { status.textContent = email ? "That email address doesn't look right." : 'Please add your email address.'; input.focus(); return; }
+        const data = new FormData();
+        data.set('email', email);
+        data.set('about', 'Cap check: a heads-up if the caps happen');
+        data.set('_subject', 'Cap check: heads-up');
+        const why = load('cap-why');
+        if (WHY[why]) data.set('why', why === 'other' ? 'Other: ' + (load('cap-why-said') || '(no reason given)') : WHY[why]);
+        submit.disabled = true;
+        status.textContent = 'Sending…';
+        try {
+          const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+          if (!res.ok) throw new Error(res.status);
+          store('cap-emailed', '1');
+          count('cap-email', 'Cap check: left an email');
+          status.textContent = '';
+          input.value = '';
+          show('yes', 'cap-sent');
+        } catch (err) {
+          status.textContent = "Sorry, that didn't send. Please try again in a minute.";
+        } finally {
+          submit.disabled = false;
+        }
+      });
+
+      const saved = load('cap-vote');
+      show(THANKS[saved] ? saved : null);
     })();
   </script>
 
