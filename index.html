@@ -801,6 +801,7 @@
     .capcheck .cap-status:not(:empty) { margin-top: 8px; font-size: .88rem; color: var(--ink); }
     .capcheck .cap-sent { margin-top: 16px; padding: 12px 14px; border-radius: 14px; background: var(--foam); font-size: .95rem; color: var(--ink); }
     .cap-undo { display: block; margin-top: 6px; padding: 6px 0; font-size: .82rem; font-weight: 400; }
+    .cap-tools { max-width: 860px; margin: 16px auto 0; }
 
     /* Pop-up windows: the photo viewer and "Add photos" */
     dialog { padding: 0; border: 0; color: var(--ink); }
@@ -1124,6 +1125,11 @@
               <button class="cap-undo" type="button" id="cap-undo">Changed your mind?</button>
             </div>
           </div>
+        </div>
+        <!-- Only shown when the site is running on my computer (see .claude/serve.ps1) -->
+        <div class="owner-tools cap-tools" id="cap-tools" hidden>
+          <a class="btn btn-primary" href="/cap-results">Cap results</a>
+          <p>Only you can see this, because the site is running on your computer.</p>
         </div>
       </div>
     </section>
@@ -3787,12 +3793,13 @@
         s.src = 'https://gc.zgo.at/count.js';
         document.head.appendChild(s);
       }
-      // Count a tap as a GoatCounter event, waiting up to 5 seconds for count.js to arrive
+      // Count a tap as a GoatCounter event, waiting up to 5 seconds for count.js to arrive.
+      // no_session: count every tap, not just one per visitor, so yes, then "Changed your mind?", then yes again adds up to one yes
       function count(path, title) {
         if (!GOATCOUNTER) return;
         let tries = 0;
         const t = setInterval(() => {
-          if (window.goatcounter && window.goatcounter.count) { clearInterval(t); window.goatcounter.count({ path, title, event: true }); }
+          if (window.goatcounter && window.goatcounter.count) { clearInterval(t); window.goatcounter.count({ path, title, event: true, no_session: true }); }
           else if (++tries > 50) clearInterval(t);
         }, 100);
       }
@@ -3892,6 +3899,11 @@
 
       const saved = load('cap-vote');
       show(THANKS[saved] ? saved : null);
+
+      // On my computer, a button to the private Cap results page
+      if (['localhost', '127.0.0.1'].includes(location.hostname)) {
+        fetch('/api/ping').then(r => r.ok ? r.json() : null).then(s => { if (s && s.ok) $('cap-tools').hidden = false; }).catch(() => {});
+      }
     })();
   </script>
 
